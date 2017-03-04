@@ -1,0 +1,4 @@
+! this seems odd because there is only one file being included but I wanted to 
+! seperate the urxvt config from any future config I add and this is the only way
+! to do it: https://wiki.archlinux.org/index.php/x_resources#Include_files
+#include ".Xresources.d/urxvt"
