@@ -32,3 +32,6 @@ gets called in `.bashrc`
 ##### bashrc
 loads dircolors
 sets up alias for firefox
+##### polybar
+config for polybar
+

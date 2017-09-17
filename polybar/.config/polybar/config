@@ -1,0 +1,130 @@
+[bar/montecristo]
+font-0 = "Source Code Pro Medium:size=12"
+font-1 = "Material Design Icons:size=14" 
+
+background = #CC000000
+foreground = #eee
+underline-size = 2
+underline-color = #eee
+
+; Setting this makes polybar appear as a bar at the top of the screen else it 
+; appears in a console window
+override-redirect = true 
+width = 100%
+modules-left = ewmh
+modules-center = xwindow
+modules-right = wireless volume backlight bat1 bat2 date
+
+separator = " "
+
+; Primary battery 
+[module/bat1]
+type = internal/battery
+battery = BAT1
+adapter = ADP1
+poll-interval = 20
+
+format-charging = "<label-charging>"
+label-charging = %percentage%%
+
+format-discharging = "<ramp-capacity><label-discharging>"
+label-discharging = %percentage%%
+
+ramp-capacity-0 =  
+ramp-capacity-1 =   
+ramp-capacity-2 =  
+ramp-capacity-3 =  
+ramp-capacity-4 =  
+ramp-capacity-5 =  
+
+; Secondary battery
+[module/bat2]
+inherit = module/bat1 
+battery = BAT0
+
+[module/ewmh]
+type = internal/xworkspaces
+
+icon-0 = code;
+icon-1 = web;
+icon-default =  
+
+format = <label-state>
+
+label-active = "%icon%" 
+;label-active-background = #88000000
+label-active-underline= #ddd
+label-active-padding = 1 
+
+label-empty = "%icon%" 
+label-empty-foreground = #55
+label-empty-padding = 1
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:50:...%
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 5.0
+
+date = "" 
+time = %H:%M
+
+date-alt = "%a %b %d "
+time-alt = %H:%M
+
+label = %date%%time%
+format = <label>
+format-padding = 1 
+
+[module/backlight]
+type = internal/xbacklight
+
+format = "<label>"
+
+label = %percentage%%
+
+[settings]
+screenchange-reload = true
+
+[module/volume]
+type = internal/volume
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+
+headphone-id = 19
+
+mapped = true
+format-volume = "<ramp-volume><label-volume>" 
+label-volume = %percentage%%
+
+label-muted =  
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/wireless]
+type = internal/network
+interface = wlp3s0 
+
+interval = 10.0
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected = %essid%
+label-connected-foreground = #eefafafa
+
+label-disconnected = %essid%
+label-disconnected-foreground = #66ffffff
