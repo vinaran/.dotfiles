@@ -4,6 +4,10 @@ dotfiles
 Config files I use for my current environment(arch + xmonad).
 I use stow(http://www.gnu.org/software/stow/) to apply my config.
 
+To use first run the `packages/install.sh` script to install all
+required programs then run the `stow-all.sh` to create the config
+files for the programs.
+
 ##### xmonad
 config for xmonad tiling window system
 ##### xresources
