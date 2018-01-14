@@ -7,5 +7,9 @@
 # set screen resolution
 xbacklight -set 65
 
+# start compton, needed for real transparency in urxvt
+compton -CGb
+
 # start xmonad
 exec xmonad
+

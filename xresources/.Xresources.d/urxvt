@@ -6,9 +6,6 @@ URxvt*underlineColor: yellow
 !!For font to be displayed correctly ensure screen resolution is correct
 !!https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_T440s
 URxvt*font: xft:Source Code Pro Medium:size=7
-URxvt*depth: 32
-URxvt*transparent: true
-URxvt*shading: 20
 URxvt*borderless: 1
 URxvt*scrollBar: false
 !!URxvt*scrollstyle: plain
@@ -22,6 +19,9 @@ URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: firefox 
 URxvt.matcher.button: 1
 URxvt.internalBorder:  4
+!!enable true transparency - this requires compton to be installed
+URxvt*depth: 32
+URxvt*background: rgba:0000/0000/0200/c800
 
 !!Source http://github.com/altercation/solarized
 
