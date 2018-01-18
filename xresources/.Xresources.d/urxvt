@@ -15,13 +15,14 @@ URxvt*loginShell: true
 Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
-URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: firefox 
-URxvt.matcher.button: 1
-URxvt.internalBorder:  4
+URxvt*internalBorder:  4
 !!enable true transparency - this requires compton to be installed
 URxvt*depth: 32
 URxvt*background: rgba:0000/0000/0200/c800
+!!perl extensions
+URxvt*perl-ext-common: default,matcher
+URxvt*url-launcher: /usr/bin/firefox
+URxvt*matcher.button: 1
 
 !!Source http://github.com/altercation/solarized
 
