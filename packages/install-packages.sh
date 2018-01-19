@@ -26,3 +26,6 @@ pacman -S --noconfirm stow
 
 # git
 pacman -S --noconfirm git
+
+# urxvt extensions(keyboard-select, url-select)
+pacman -S --noconfirm urxvt-perls
