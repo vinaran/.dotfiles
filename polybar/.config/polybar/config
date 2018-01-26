@@ -1,8 +1,9 @@
 [bar/montecristo]
-font-0 = "Source Code Pro Medium:size=12"
-font-1 = "Material Design Icons:size=14" 
+font-0 = "Source Code Pro Medium:size=10"
+font-1 = "Material Design Icons:size=10" 
+font-2 = "FontAwesome:size=10"
 
-background = #CC000000
+background = #BF000000
 foreground = #eee
 underline-size = 2
 underline-color = #eee
@@ -25,17 +26,19 @@ adapter = ADP1
 poll-interval = 20
 
 format-charging = "<label-charging>"
-label-charging = %percentage%%
+label-charging-font = 3
+label-charging =  %percentage%%
 
-format-discharging = "<ramp-capacity><label-discharging>"
-label-discharging = %percentage%%
+format-discharging = "<ramp-capacity><label-discharging> "
+label-discharging-font = 3
+label-discharging = " %percentage%%"
 
-ramp-capacity-0 =  
-ramp-capacity-1 =   
-ramp-capacity-2 =  
-ramp-capacity-3 =  
-ramp-capacity-4 =  
-ramp-capacity-5 =  
+ramp-capacity-font = 3
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 ; Secondary battery
 [module/bat2]
@@ -45,12 +48,12 @@ battery = BAT0
 [module/ewmh]
 type = internal/xworkspaces
 
-icon-0 = code;
-icon-1 = web;
-icon-default =  
+icon-0 = code;
+icon-1 = web;
+icon-default = 
 
 format = <label-state>
-
+label-active-font = 3
 label-active = "%icon%" 
 ;label-active-background = #88000000
 label-active-underline= #ddd
@@ -59,6 +62,7 @@ label-active-padding = 1
 label-empty = "%icon%" 
 label-empty-foreground = #55
 label-empty-padding = 1
+label-empty-font = 3
 
 [module/xwindow]
 type = internal/xwindow
@@ -77,7 +81,8 @@ date-alt = "%a %b %d "
 time-alt = %H:%M
 
 label = %date%%time%
-format = <label>
+label-font = 1
+format =  <label>
 format-padding = 1 
 
 [module/backlight]
@@ -85,7 +90,8 @@ type = internal/xbacklight
 
 format = "<label>"
 
-label = %percentage%%
+label-font = 3
+label =  %percentage%%
 
 [settings]
 screenchange-reload = true
@@ -105,14 +111,12 @@ headphone-mixer = Headphone
 headphone-id = 19
 
 mapped = true
-format-volume = "<ramp-volume><label-volume>" 
-label-volume = %percentage%%
+format-volume = <label-volume>
+label-volume =  %percentage%%
+label-volume-font = 3
 
 label-muted =  
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+label-muted-font = 2
 
 [module/wireless]
 type = internal/network
@@ -125,6 +129,8 @@ format-disconnected = <label-disconnected>
 
 label-connected = %essid%
 label-connected-foreground = #eefafafa
+label-connected-font = 2
 
 label-disconnected = %essid%
 label-disconnected-foreground = #66ffffff
+label-disconnected-font = 3
