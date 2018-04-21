@@ -23,7 +23,10 @@ main = do
         normalBorderColor = "#705129",
         focusedBorderColor = "#A17917",
         layoutHook = desktopLayoutModifiers layout,
-        handleEventHook = handleEventHook desktopConfig <+> fullscreenEventHook
+        handleEventHook = handleEventHook desktopConfig <+> fullscreenEventHook,
+        logHook = ewmhDesktopsLogHook,
+        workspaces = ["code", "web", "3", "4", "5", "6", "7"],
+        startupHook = ewmhDesktopsStartup
     }  `additionalKeys`
       -- mod+b - will hide the bar
       [ ((mod4Mask, xK_b), sendMessage ToggleStruts) ]
