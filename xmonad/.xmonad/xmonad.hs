@@ -2,6 +2,9 @@ import XMonad
 import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout
+import XMonad.Config.Desktop
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Layout.Fullscreen hiding (fullscreenEventHook)
 
 -- layout
 layout = tall ||| wide ||| full
@@ -9,7 +12,7 @@ layout = tall ||| wide ||| full
     tall = smartBorders $ Tall 1 0.03 0.5
     wide = Mirror tall
     full = noBorders Full
-    
+
 main = do
     xmproc <- spawnPipe "sleep 0.1;polybar -r montecristo"  
     xmonad $ defaultConfig {
@@ -17,5 +20,6 @@ main = do
         modMask = mod4Mask,
         normalBorderColor = "#705129",
         focusedBorderColor = "#A17917",
-        layoutHook = layout
+        layoutHook = desktopLayoutModifiers layout,
+        handleEventHook = handleEventHook desktopConfig <+> fullscreenEventHook
     }
