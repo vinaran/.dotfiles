@@ -5,6 +5,8 @@ import XMonad.Layout
 import XMonad.Config.Desktop
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.Fullscreen hiding (fullscreenEventHook)
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.EZConfig
 
 -- layout
 layout = tall ||| wide ||| full
@@ -22,4 +24,6 @@ main = do
         focusedBorderColor = "#A17917",
         layoutHook = desktopLayoutModifiers layout,
         handleEventHook = handleEventHook desktopConfig <+> fullscreenEventHook
-    }
+    }  `additionalKeys`
+      -- mod+b - will hide the bar
+      [ ((mod4Mask, xK_b), sendMessage ToggleStruts) ]
