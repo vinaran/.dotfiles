@@ -3,10 +3,12 @@ import XMonad.Util.Run
 import XMonad.Layout.NoBorders
 import XMonad.Layout
 import XMonad.Config.Desktop
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Layout.Fullscreen hiding (fullscreenEventHook)
+import XMonad.Hooks.EwmhDesktops hiding (fullscreenEventHook)
+import XMonad.Layout.Fullscreen
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.EZConfig
+import XMonad.Layout.Fullscreen
+import XMonad.Hooks.ManageHelpers
 
 -- layout
 layout = tall ||| wide ||| full
@@ -15,8 +17,21 @@ layout = tall ||| wide ||| full
     wide = Mirror tall
     full = noBorders Full
 
+-- hooks
+myManageHook :: ManageHook
+myManageHook = composeAll
+                [ isFullscreen          --> doFullFloat,
+                className =? "Emacs"    --> doShift "code",
+                className =? "Firefox"    --> doShift "web",
+                fullscreenManageHook,
+                manageDocks
+                ]
+
 main = do
-    xmproc <- spawnPipe "sleep 0.1;polybar -r montecristo"  
+    xmproc <- spawnPipe "sleep 0.1;polybar -r montecristo"
+    spawn "emacs"
+    spawn "firefox"
+    
     xmonad $ defaultConfig {
         terminal = "urxvt",
         modMask = mod4Mask,
@@ -26,7 +41,8 @@ main = do
         handleEventHook = handleEventHook desktopConfig <+> fullscreenEventHook,
         logHook = ewmhDesktopsLogHook,
         workspaces = ["code", "web", "3", "4", "5", "6", "7"],
-        startupHook = ewmhDesktopsStartup
+        startupHook = ewmhDesktopsStartup,
+        manageHook = myManageHook <+> manageHook defaultConfig
     }  `additionalKeys`
       -- mod+b - will hide the bar
       [ ((mod4Mask, xK_b), sendMessage ToggleStruts) ]
