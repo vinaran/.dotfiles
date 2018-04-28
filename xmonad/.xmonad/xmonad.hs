@@ -9,6 +9,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.EZConfig
 import XMonad.Layout.Fullscreen
 import XMonad.Hooks.ManageHelpers
+import XMonad.Actions.SpawnOn
 
 ---------------------------------------------------------------
 -- colours
@@ -38,28 +39,24 @@ layout = tall ||| wide ||| full
 ---------------------------------------------------------------
 -- hooks
 ---------------------------------------------------------------
-myManageHook :: ManageHook
-myManageHook = composeAll
-                [ fullscreenManageHook
-                , manageDocks
-                , isFullscreen                --> doFullFloat
-                , className =? myEditorClass  --> doShift "code"
-                , className =? myBrowserClass --> doShift "web"]
+myStartupHook = spawnOn myCodeWorkspace myEditor
+                >> spawnOn myWebWorkspace myBrowser
 
 ---------------------------------------------------------------
 -- workspaces
 ---------------------------------------------------------------
-myWorkspaces = ["code", "web", "3", "4", "5", "6", "7"]
+myCodeWorkspace = "code"
+myWebWorkspace  = "web"
+myWorkspaces    = [myCodeWorkspace, myWebWorkspace, "3", "4", "5", "6", "7"]
 
 ---------------------------------------------------------------
 -- main
 ---------------------------------------------------------------
 main = do
     xmproc <- spawnPipe myStatusBar
-    spawn myEditor
-    spawn myBrowser
-    
-    xmonad $ defaultConfig
+
+    xmonad
+        $ defaultConfig
            {terminal           = myTerminal
            ,modMask            = mod4Mask
            ,normalBorderColor  = myNormalBorderColor
@@ -68,8 +65,8 @@ main = do
            ,handleEventHook    = handleEventHook desktopConfig <+> fullscreenEventHook
            ,logHook            = ewmhDesktopsLogHook
            ,workspaces         = myWorkspaces
-           ,startupHook        = ewmhDesktopsStartup
-           ,manageHook         = myManageHook <+> manageHook defaultConfig
-    }  `additionalKeys`
-      -- mod+b - will hide the bar
-      [ ((mod4Mask, xK_b), sendMessage ToggleStruts) ]
+           ,startupHook        = myStartupHook <+> ewmhDesktopsStartup
+           ,manageHook         = manageSpawn <+> manageHook defaultConfig
+           }  `additionalKeys`
+           -- mod+b - will hide the bar
+           [ ((mod4Mask, xK_b), sendMessage ToggleStruts) ]
