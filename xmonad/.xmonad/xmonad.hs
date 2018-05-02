@@ -10,6 +10,7 @@ import XMonad.Util.EZConfig
 import XMonad.Layout.Fullscreen
 import XMonad.Hooks.ManageHelpers
 import XMonad.Actions.SpawnOn
+import XMonad.Hooks.FadeWindows
 
 ---------------------------------------------------------------
 -- colours
@@ -42,6 +43,12 @@ layout = tall ||| wide ||| full
 myStartupHook = spawnOn myCodeWorkspace myEditor
                 >> spawnOn myWebWorkspace myBrowser
 
+myFadeHook = composeAll
+    [ opaque,
+    (className =? "URxvt") --> opacity 0.77]
+
+myLogHook = fadeWindowsLogHook myFadeHook
+
 ---------------------------------------------------------------
 -- workspaces
 ---------------------------------------------------------------
@@ -63,7 +70,7 @@ main = do
            ,focusedBorderColor = myFocusedBorderColor
            ,layoutHook         = desktopLayoutModifiers layout
            ,handleEventHook    = handleEventHook desktopConfig <+> fullscreenEventHook
-           ,logHook            = ewmhDesktopsLogHook
+           ,logHook            = myLogHook <+> ewmhDesktopsLogHook
            ,workspaces         = myWorkspaces
            ,startupHook        = myStartupHook <+> ewmhDesktopsStartup
            ,manageHook         = manageSpawn <+> manageHook defaultConfig
