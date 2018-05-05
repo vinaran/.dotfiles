@@ -1,6 +1,8 @@
 #!/bin/bash
+# Install aura(arch user repository) package manager
+# this package is not available in the official repo, so we need to install it
+# manually
 
-# install aura(arch user repository) package manager
 mkdir ~/.temp
 cd ~/.temp
 curl https://aur.archlinux.org/cgit/aur.git/snapshot/aura.tar.gz --output aura.tar.gz

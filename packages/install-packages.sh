@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # installs packages I need for my Arch environment,
 # after running this script run 'stow-all.sh' to install
 # the config required for these programs

@@ -1,13 +1,13 @@
 #!/bin/bash
-
-# install material-design icons, used by polybar:
+# Install material-design icons, used by polybar:
 #   https://materialdesignicons.com/
 # use this website to load the TTF file and view the charmap:
 #   http://bluejamesbond.github.io/CharacterMap/
 #
-# use 'fc-list' to check which fonts are installed,
+# Use 'fc-list' to check which fonts are installed,
 # polybar uses 'fc-match' to find a font, so if the font is not
-# being detected, check that you can find it using 'fc-match'
+# being detected, check that you can find it using 'fc-match'.
+
 mkdir ~/.temp
 cd ~/.temp
 curl "https://github.com/Templarian/MaterialDesign-Webfont/archive/master.zip" --output master.zip
