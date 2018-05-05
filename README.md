@@ -2,11 +2,20 @@ dotfiles
 ========
 
 Config files I use for my current environment(arch + xmonad).
-I use stow(http://www.gnu.org/software/stow/) to apply my config.
 
-To use first run the `packages/install.sh` script to install all
-required programs then run the `stow-all.sh` to create the config
-files for the programs.
+### install
+Run the main install script `packages/install.sh` script,
+this will install all required programs/packages/fonts.
+
+After the programs have been installed, they still need to be
+configured.
+
+I use stow(http://www.gnu.org/software/stow/) to apply my config,
+it is installed as part of the install scripts.
+
+Run `./stow-all.sh` to create the config files for the programs.
+
+### config files
 
 ##### xmonad
 config for xmonad tiling window system
@@ -43,3 +52,20 @@ binds multimedia keys to action scripts, e.g pushing the volume-up key will
 call `~/bin/volume.sh up` and increment the volume,
 the .xinitrc file contains the call to `xbindkeys` which will read the
 source file in `~/.xbindkeysrc`
+
+### packages
+
+##### install-packages.sh
+installs packages from the offical arch repo using pacman:
+https://www.archlinux.org/packages/
+
+##### install-aura.sh
+aura is a package manager for the arch user repository, this is for unoffical
+packages that arch users might find useful but are not available in the offical
+repo:https://aur.archlinux.org/
+
+##### install-aur-packages.sh
+install packages from the aur
+
+##### install-fonts.sh
+install fonts, this installs fonts from the official and user repo.
