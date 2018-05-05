@@ -15,8 +15,9 @@ import XMonad.Hooks.FadeWindows
 ---------------------------------------------------------------
 -- colours
 ---------------------------------------------------------------
-myNormalBorderColor  = "#705129"
-myFocusedBorderColor = "#A17917"
+myNormalBorderColor  = "#000000"
+myFocusedBorderColor = "#000000"
+myBorderWidth = 3
 
 ---------------------------------------------------------------
 -- applications
@@ -68,6 +69,7 @@ main = do
            ,modMask            = mod4Mask
            ,normalBorderColor  = myNormalBorderColor
            ,focusedBorderColor = myFocusedBorderColor
+           ,borderWidth        = myBorderWidth
            ,layoutHook         = desktopLayoutModifiers layout
            ,handleEventHook    = handleEventHook desktopConfig <+> fullscreenEventHook
            ,logHook            = myLogHook <+> ewmhDesktopsLogHook
