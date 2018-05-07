@@ -47,11 +47,6 @@ loads dircolors
 sets up alias for firefox
 ##### polybar
 config for polybar
-##### xbindkeys
-binds multimedia keys to action scripts, e.g pushing the volume-up key will
-call `~/bin/volume.sh up` and increment the volume,
-the .xinitrc file contains the call to `xbindkeys` which will read the
-source file in `~/.xbindkeysrc`
 
 ### packages
 
