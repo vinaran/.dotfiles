@@ -29,7 +29,7 @@ format-charging = "<label-charging>"
 label-charging-font = 3
 label-charging =  %percentage%%
 
-format-discharging = "<ramp-capacity><label-discharging> "
+format-discharging = "<ramp-capacity><label-discharging>"
 label-discharging-font = 3
 label-discharging = " %percentage%%"
 
@@ -80,9 +80,9 @@ time = %H:%M
 date-alt = "%a %b %d "
 time-alt = %H:%M
 
-label = %date%%time%
-label-font = 1
-format =  <label>
+label =   %date%%time%
+label-font = 3
+format = <label>
 format-padding = 1 
 
 [module/backlight]
