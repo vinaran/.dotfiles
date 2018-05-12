@@ -80,4 +80,7 @@ main = do
            [ ((mod4Mask, xK_b), sendMessage ToggleStruts) --toggle bar visibility
            , ((0              , 0x1008ff02), spawn "xbacklight -inc 10") --brightness up           
            , ((0              , 0x1008ff03), spawn "xbacklight -dec 10") --brightness down  
+           , ((0              , 0x1008ff11), spawn "amixer -qc 0 set Master 2%-")            --volume down
+           , ((0              , 0x1008ff12), spawn "amixer -c 0 set Master playback toggle") --volume mute toggle
+           , ((0              , 0x1008ff13), spawn "amixer -qc 0 set Master 2%+")            --volume up           
            ]
