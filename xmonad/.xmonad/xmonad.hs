@@ -22,7 +22,7 @@ myBorderWidth = 3
 ---------------------------------------------------------------
 -- applications
 ---------------------------------------------------------------
-myStatusBar    = "sleep 0.1;polybar -r montecristo"
+myStatusBar    = "sleep 0.1;polybar -l info -r montecristo"
 myBrowser      = "firefox"
 myBrowserClass = "Firefox"
 myEditor       = "emacs"
@@ -77,5 +77,7 @@ main = do
            ,startupHook        = myStartupHook <+> ewmhDesktopsStartup
            ,manageHook         = manageSpawn <+> manageHook defaultConfig
            }  `additionalKeys`
-           -- mod+b - will hide the bar
-           [ ((mod4Mask, xK_b), sendMessage ToggleStruts) ]
+           [ ((mod4Mask, xK_b), sendMessage ToggleStruts) --toggle bar visibility
+           , ((0              , 0x1008ff02), spawn "xbacklight -inc 10") --brightness up           
+           , ((0              , 0x1008ff03), spawn "xbacklight -dec 10") --brightness down  
+           ]
