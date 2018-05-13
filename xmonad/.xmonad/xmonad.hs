@@ -78,6 +78,7 @@ main = do
            ,manageHook         = manageSpawn <+> manageHook defaultConfig
            }  `additionalKeys`
            [ ((mod4Mask, xK_b), sendMessage ToggleStruts) --toggle bar visibility
+           , ((mod4Mask, xK_n), spawn  "/home/vnaran/.bin/toggle-bar.sh")
            , ((0              , 0x1008ff02), spawn "xbacklight -inc 10") --brightness up           
            , ((0              , 0x1008ff03), spawn "xbacklight -dec 10") --brightness down  
            , ((0              , 0x1008ff11), spawn "amixer -qc 0 set Master 2%-")            --volume down

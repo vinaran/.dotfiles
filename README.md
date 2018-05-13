@@ -48,6 +48,13 @@ sets up alias for firefox
 ##### polybar
 config for polybar
 
+### bin
+see script file for more details
+
+##### toggle-bar.sh
+toggles the visibility of the bar xwindow on all workspaces,
+triggered by key bindings(mod-key + n) defined in xmonad.hs
+
 ### packages
 
 ##### install-packages.sh
